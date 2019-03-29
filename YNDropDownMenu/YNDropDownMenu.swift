@@ -532,11 +532,7 @@ open class YNDropDownMenu: UIView, YNDropDownDelegate {
                     self.blurEffectView?.alpha = self.blurEffectViewAlpha
                 }
                 self.frame = CGRect(x: self.frame.origin.x, y: self.frame.origin.y, width: self.frame.width, height: dropDownView.frame.height + CGFloat(self.menuHeight))
-                if let _buttonImageView = buttonImageView {
-//                    _buttonImageView.layer.transform = CATransform3DMakeRotation(CGFloat(Double.pi), 1.0, 0.0, 0.0)
-                    _buttonImageView.image = self.buttonImagesArray?[yNDropDownButton.tag]?.selected
-//                    _buttonImageView.image = self.buttonImages?.selected
-                }
+                buttonImageView?.transform = CGAffineTransform(rotationAngle: CGFloat.pi)
                 yNDropDownButton.buttonLabel.textColor = self.buttonlabelFontColors?.selected
                 yNDropDownButton.buttonLabel.font = self.buttonlabelFonts?.selected
                 
@@ -564,11 +560,7 @@ open class YNDropDownMenu: UIView, YNDropDownDelegate {
                     self.blurEffectView?.alpha = 0
                 }
                 self.frame = CGRect(x: self.frame.origin.x, y: self.frame.origin.y, width: self.frame.width, height: CGFloat(self.menuHeight))
-                if let _buttonImageView = buttonImageView {
-                    _buttonImageView.layer.transform = CATransform3DMakeRotation(CGFloat(Double.pi), 0.0, 0.0, 0.0);
-//                    _buttonImageView.image = self.buttonImages?.normal
-                    _buttonImageView.image = self.buttonImagesArray?[yNDropDownButton.tag]?.normal
-                }
+                buttonImageView?.transform = .identity
                 
                 guard let alwaysOnIndex = self.alwaysOnIndex else { return }
                 if !alwaysOnIndex.contains(yNDropDownButton.tag) {
